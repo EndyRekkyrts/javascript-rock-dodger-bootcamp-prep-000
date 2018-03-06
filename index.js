@@ -39,7 +39,7 @@ function checkCollision(rock) {
     if ((rockLeftEdge <= dodgerLeftEdge && rockRightEdge >= dodgerLeftEdge) ||
         (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) ||
         (rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge))
-      return false;
+      return true;
     /**
                * Think about it -- what's happening here?
                * There's been a collision if one of three things is true:
@@ -50,7 +50,7 @@ function checkCollision(rock) {
                * 3. The rock's left edge is < the DODGER's right edge,
                *    and the rock's right edge is > the DODGER's right edge
                */
-    else return true;
+    else return false;
     }
 }
 
@@ -83,7 +83,7 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-     if (checkCollision(rock)) {
+     if (checkCollision(rock) === true) {
        return endGame();
      }
      if (top < GAME_HEIGHT) {
